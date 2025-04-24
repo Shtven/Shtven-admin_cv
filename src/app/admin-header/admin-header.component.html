@@ -1,0 +1,34 @@
+<div class="container color-dark">
+    
+    <div class="col">
+
+        <p class="section-title">header items</p>
+
+    </div>
+
+</div>
+<div class="container color-light">
+    
+    <div class="col">
+        
+        <form>
+            <input type="text" class="txt" name="name" placeholder="name" [(ngModel)]="myHeader.name"> <br>
+            <input type="text" class="txt" name="goalLife" placeholder="goalLife" [(ngModel)]="myHeader.goalLife"> <br>
+            <input type="text" class="txt" name="photo" placeholder="photo (url)" [(ngModel)]="myHeader.photoUrl"> <br>
+            <input type="text" class="txt" name="email" placeholder="email (email@domain.com)" [(ngModel)]="myHeader.email"> <br>
+            <input type="text" class="txt" name="phoneNumber" placeholder="phoneNumber (999-999-9999)" [(ngModel)]="myHeader.phoneNumber"> <br>
+            <input type="text" class="txt" name="location" placeholder="location (city, country)" [(ngModel)]="myHeader.location"> <br>
+            <input type="text" class="txt" name="socialNetwork" placeholder="socialNetwork (user@site)" [(ngModel)]="myHeader.socialNetwork"> <br>
+
+            <input type="submit" class="btn" value="{{ btntxt }}" (click)="AgregarJob()">
+        </form>
+    </div>
+
+    <div class="o-list">
+        <div class="o-item" *ngFor="let job of header">
+          <span>{{job.name}}</span>
+          <button class="delete-btn" (click)="deleteJob(job.id)">delete</button>
+        </div>
+    </div>   
+
+</div>
