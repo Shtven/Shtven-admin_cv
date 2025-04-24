@@ -24,6 +24,7 @@
         <div class="o-item" *ngFor="let job of skills">
           <span>{{job.skill}} - {{job.porcentage}}</span>
           <button class="delete-btn" (click)="deleteJob(job.id)">delete</button>
+          <button class="edit-btn" (click)="edit(job)">update</button>
         </div>
     </div>   
 

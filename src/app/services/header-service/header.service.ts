@@ -18,8 +18,8 @@ export class HeaderService {
     return this.headerRef;
   }
 
-  createHeader(myJob: Header): any {
-    return this.headerRef.add({ ...myJob });
+  updateHeader(id: string,myJob: Header): any {
+    return this.headerRef.doc(id).update(myJob);
   }
 
   deleteHeader(id?: string): Promise<void> {

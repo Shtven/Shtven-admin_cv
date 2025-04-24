@@ -25,6 +25,7 @@
         <div class="education-item" *ngFor="let job of education">
           <span>{{job.escuela}} - {{job.startDate}} - {{job.endDate}}</span>
           <button class="delete-btn" (click)="deleteJob(job.id)">delete</button>
+          <button class="edit-btn" (click)="edit(job)">update</button>
         </div>
     </div>      
 

@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class AdminHeaderComponent {
   itemCount: number = 0;
-    btntxt: string = "Agregar";
+    btntxt: string = "Actualizar";
     goalText: string = "";
     header: Header[] = [];
     myHeader: Header = new Header();
@@ -24,16 +24,17 @@ export class AdminHeaderComponent {
       )    
     )
         ).subscribe(data => {
-          this.header=data;
+          this.myHeader=data[0];
     console.log(this.header);
         });
   }
   
   AgregarJob(){
-    console.log(this.myHeader);
-    this.headerService.createHeader(this.myHeader).then(() => {
-      console.log('Created new item successfully!');
+    if(this.myHeader.id){
+    this.headerService.updateHeader(this.myHeader.id,this.myHeader).then(() => {
+      console.log('update item successfully!');
      });
+    }
     }
       
   deleteJob(id? :string){

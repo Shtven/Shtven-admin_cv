@@ -96,3 +96,18 @@
     background-color: #c0392b;
   }
   
+  .edit-btn {
+    background-color: #7ca814;
+    border: none;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .edit-btn:hover {
+    background-color: #76c214;
+  }

@@ -31,10 +31,18 @@ export class AdminSkillsComponent {
     }
 
   AgregarJob(){
-    console.log(this.mySkills);
-    this.skillsService.createSkills(this.mySkills).then(() => {
-      console.log('Created new item successfully!');
-    });
+    if(this.mySkills.id){
+      this.skillsService.update(this.mySkills.id, this.mySkills). then(() =>
+      {
+        console.log("Update successfully!");
+        this.resetForm();
+      });
+    }else{
+      this.skillsService.createSkills(this.mySkills).then(() => {
+        console.log('Created successfully');
+        this.resetForm();
+      });
+    }
   }
   
   deleteJob(id? :string){
@@ -42,5 +50,15 @@ export class AdminSkillsComponent {
       console.log('delete item successfully!');
     });
        console.log(id);
+  }
+
+  edit(item: Skills) {
+    this.mySkills = { ...item };
+    this.btntxt = "Actualizar";
+  }
+
+  resetForm() {
+    this.mySkills = new Skills();
+    this.btntxt = "Agregar";
   }
 }

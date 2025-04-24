@@ -29,11 +29,19 @@ export class AdminEducationComponent {
   }
   
   AgregarJob(){
-    console.log(this.myEducation);
-    this.educationService.createEducation(this.myEducation).then(() => {
-      console.log('Created new item successfully!');
-     });
+    if(this.myEducation.id){
+      this.educationService.update(this.myEducation.id, this.myEducation). then(() =>
+      {
+        console.log("Update successfully!");
+        this.resetForm();
+      });
+    }else{
+      this.educationService.createEducation(this.myEducation).then(() => {
+        console.log('Created successfully');
+        this.resetForm();
+      });
     }
+  }
       
   deleteJob(id? :string){
     this.educationService.deleteEducation(id).then(() => {
@@ -41,4 +49,14 @@ export class AdminEducationComponent {
     });
        console.log(id);
   }
+
+    edit(item: Education) {
+      this.myEducation = { ...item };
+      this.btntxt = "Actualizar";
+    }
+  
+    resetForm() {
+      this.myEducation = new Education();
+      this.btntxt = "Agregar";
+    }
 }

@@ -27,6 +27,7 @@
         <div class="o-item" *ngFor="let job of workExperience">
           <span>{{job.company}} - {{job.position}}</span>
           <button class="delete-btn" (click)="deleteJob(job.id)">delete</button>
+          <button class="edit-btn" (click)="edit(job)">update</button>
         </div>
     </div>   
 

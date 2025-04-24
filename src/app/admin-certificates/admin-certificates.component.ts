@@ -31,11 +31,19 @@ export class AdminCertificatesComponent {
   }
   
   AgregarJob(){
-    console.log(this.myCertificates);
-    this.certificatesServices.createCertificates(this.myCertificates).then(() => {
-      console.log('Created new item successfully!');
-     });
+    if(this.myCertificates.id){
+      this.certificatesServices.update(this.myCertificates.id, this.myCertificates). then(() =>
+      {
+        console.log("Update successfully!");
+        this.resetForm();
+      });
+    }else{
+      this.certificatesServices.createCertificates(this.myCertificates).then(() => {
+        console.log('Created successfully');
+        this.resetForm();
+      });
     }
+  }
       
   deleteJob(id? :string){
     this.certificatesServices.deleteCertificates(id).then(() => {
@@ -43,4 +51,14 @@ export class AdminCertificatesComponent {
     });
        console.log(id);
   }
+
+    edit(item: Certificates) {
+      this.myCertificates = { ...item };
+      this.btntxt = "Actualizar";
+    }
+  
+    resetForm() {
+      this.myCertificates = new Certificates();
+      this.btntxt = "Agregar";
+    }
 }

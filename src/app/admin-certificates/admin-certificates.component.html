@@ -24,6 +24,7 @@
         <div class="o-item" *ngFor="let job of certificates">
           <span>{{job.title}} - {{job.year}}</span>
           <button class="delete-btn" (click)="deleteJob(job.id)">delete</button>
+          <button class="edit-btn" (click)="edit(job)">update</button>
         </div>
     </div>      
 
